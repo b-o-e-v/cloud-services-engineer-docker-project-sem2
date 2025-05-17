@@ -17,6 +17,7 @@ node_modules
 # Git
 .git
 .gitignore
+*.md
 
 # Вывод тестов
 coverage

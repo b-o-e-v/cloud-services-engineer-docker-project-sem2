@@ -18,6 +18,7 @@ Gopkg.toml
 # Git
 .git
 .gitignore
+*.md
 
 # Вывод тестов и кэш
 coverage
