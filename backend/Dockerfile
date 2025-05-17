@@ -11,8 +11,7 @@ RUN go mod download
 
 COPY . .
 
-# RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-w -s" -o server ./cmd/api
-RUN CGO_ENABLED=0 go build -ldflags="-w -s" -o server ./cmd/api
+RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-w -s" -o server ./cmd/api
 
 # Этап 2: Финальный образ
 FROM alpine:3.21
