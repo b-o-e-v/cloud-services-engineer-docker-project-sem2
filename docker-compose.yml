@@ -52,8 +52,6 @@ services:
     image: nginx:alpine
     ports:
       - "80:80"
-    volumes:
-      - ./gateway.conf:/etc/nginx/nginx.conf:ro
     depends_on:
       - frontend
       - backend
@@ -65,11 +63,17 @@ services:
       timeout: 5s
       retries: 3
       start_period: 10s
+    volumes:
+      - ./gateway.conf:/etc/nginx/nginx.conf:ro
+      - gateway-cache:/var/cache/nginx:rw
+      - gateway-logs:/var/log/nginx:rw
 
 networks:
   store-network:
     driver: bridge
 
 volumes:
+  gateway-logs:
+  gateway-cache:
   nginx-cache:
   nginx-pid:
