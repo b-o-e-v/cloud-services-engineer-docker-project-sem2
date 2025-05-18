@@ -62,7 +62,7 @@ jobs:
           ignore-unfixed: true
 
   run_with_docker_compose:
-    name: Run with docker compose
+    name: Run with Docker Compose
     runs-on: ubuntu-latest
     needs: trivy_scan
     steps:
