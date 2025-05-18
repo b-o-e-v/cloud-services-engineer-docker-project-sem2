@@ -15,7 +15,7 @@ RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-w -s" -o server ./cmd/api
 # Этап 2: Финальный образ
 FROM alpine:3.21
 
-RUN apk add --no-cache ca-certificates tzdata && update-ca-certificates
+RUN apk add --no-cache ca-certificates && update-ca-certificates
 RUN addgroup -g 1001 -S server-group && adduser -u 1001 -S server-user -G server-group
 
 WORKDIR /app

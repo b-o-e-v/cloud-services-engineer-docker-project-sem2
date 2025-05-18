@@ -8,9 +8,7 @@ RUN npm ci
 
 COPY . .
 
-ENV NODE_ENV=production
-ENV VUE_APP_API_URL=/momo-api
-
+ENV NODE_ENV=production VUE_APP_API_URL=/momo-api
 RUN npm run build
 
 # Этап 2: Финальный образ
