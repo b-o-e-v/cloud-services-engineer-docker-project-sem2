@@ -93,7 +93,7 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: "./docker-compose.yml"
+          source: "./docker-compose.yml,./gateway.conf"
           target: "/home/${{ secrets.SSH_USER }}/app"
       - name: Run docker-compose on server
         uses: appleboy/ssh-action@v1.2.2
