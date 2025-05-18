@@ -8,6 +8,9 @@ RUN npm ci
 
 COPY . .
 
+ENV NODE_ENV=production
+ENV VUE_APP_API_URL=/momo-api
+
 RUN npm run build
 
 # Этап 2: Финальный образ
@@ -17,7 +20,7 @@ RUN apk update && apk upgrade && apk add --no-cache curl
 RUN addgroup -g 1001 -S app-group && adduser -u 1001 -S app-user -G app-group
 
 COPY --chown=app-user:app-group nginx.conf /etc/nginx/conf.d/default.conf
-COPY --from=builder /app/dist /usr/share/nginx/html/momo-store
+COPY --from=builder /app/dist /usr/share/nginx/html
 
 RUN \
   chown -R app-user:app-group /var/cache/nginx /var/log/nginx /etc/nginx/conf.d && \
